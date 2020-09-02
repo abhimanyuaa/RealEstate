@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head th:replace="layout :: headerLink">
+
+</head>
+<body>
+	<!--====================  NavBar area Start ====================-->
+	<div th:replace="layout :: navbar"></div>
+	<!--====================  NavBar area End ====================-->
+
+	<!-- Body Content Start -->
+	<!-- Page Banner Start-->
+	<section class="page-banner padding">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<h1 class="text-uppercase">Welcome</h1>
+					<p>To Castle Real Esatate</p>
+
+				</div>
+			</div>
+		</div>
+		<br> <br>
+	</section>
+	<!-- Page Banner End -->
+	<br>
+	<br>
+	<div class="container">
+		<div class="row" >
+			<div  th:if="${msg == 'new'}" class="col-md-12">
+				<h2 class="text-uppercase heading_space">Buy package To get
+					Premium Service</h2>
+					<p class="heading_space">Enjoy the unlimited Service and Extra Benifits after buying package !!!!!</p>
+			</div>
+			<div th:if="${msg == 'over'}"  class="col-md-12">
+			<h2 class="text-uppercase heading_space">Buy package To get
+					Premium Service</h2>
+					<p class="heading_space">Renew Your Subscription !!!!!</p>
+			
+			</div>
+		</div>
+		<div align="center">
+		
+			<div id="testinomial-masonry" class="cbp"  >
+				<div class="cbp-item" th:each="pkg:${pkgList}"  >
+				<form action="/Buy-Now" method="post"  >
+				<input type="hidden" id="packageId" name="PackageId" th:value="${pkg.packageId}">
+					<div class="testinomial_box">
+						<div class="testinomial_desc blue_dark  text-center">
+							<h2 id="packageName" th:text="${pkg.packageName}">
+								<u>Silver</u>
+							</h2>
+							<br>
+							<h3 th:text="${'Rs.'+pkg.packagePrice}">Price</h3>
+							<br>
+							<div class="text-left"  th:each="list:${pkg.pkgFeatureList}">
+								<ul >
+									<li style="list-style-type: '\2713" th:text="${list.featureName}" >&nbsp&nbspOne Month Subscription</li><br>
+								</ul>
+							</div>
+							<br>
+							 <br>
+							 <button  type="submit" class="btn-yellow border_radius">Buy Package</button>
+							 <br>
+							<br>
+							 <p  th:text="${pkg.packageDuration +' Days'}">(For One Month)</p>
+						</div>
+					</div>
+					</form>
+				</div>
+			<!-- 	<div class="cbp-item" >
+					<div class="testinomial_box">
+						<div class="testinomial_desc blue_dark  text-center">
+							<h2>
+								<u>Gold</u>
+							</h2>
+							<br>
+							<br>
+							<div class="text-left">
+								<ul class="ultype">
+									<li style="list-style-type: '\2713">&nbsp&nbspSix Month Subscription</li><br>
+									<li style="list-style-type: '\2715">&nbsp&nbspNo Need of Broker</li><br>
+									<li style="list-style-type: '\2713">&nbsp&nbsp30 Properties per Month</li><br>
+									<li style="list-style-type: '\2713">&nbsp&nbspFast Response</li><br>
+									<li style="list-style-type: '\2713">&nbsp&nbspSuitable for Real Estate Peoples</li><br>
+									<li style="list-style-type: '\2713">&nbsp&nbspDiscount On Sell</li>
+								</ul>
+							</div>
+							<br>
+							
+							 <button  type="submit" class="btn-yellow border_radius">Buy Package</button>
+							 <br>
+							 <br>
+							 <p>(For Three Month)</p>
+						</div>
+					</div>
+				</div>
+					<div  class="cbp-item" >
+					<div class="testinomial_box">
+						<div class="testinomial_desc blue_dark  text-center">
+							<h2>
+								<u>Paltinum</u>
+							</h2>
+							<br>
+							<br>
+							<div class="text-left">
+								<ul class="ultype">
+									<li style="list-style-type: '\2713">&nbsp&nbsp1 year Subscription</li><br>
+									<li style="list-style-type: '\2713">&nbsp&nbsp40 Properties per Month</li><br>
+									<li style="list-style-type: '\2713">&nbsp&nbspFast Response</li><br>
+									<li style="list-style-type: '\2715">&nbsp&nbspNo Need of Broker</li><br>
+									<li style="list-style-type: '\2713">&nbsp&nbspSuitable for Seller And Buyer</li><br>
+									<li style="list-style-type: '\2713">&nbsp&nbspDiscount on Buying</li>
+								</ul>
+							</div>
+							<br>
+							
+							 <button  type="submit" class="btn-yellow border_radius">Buy Package</button>
+							 <br>
+							 <br>
+							 <p>(For Six Month)</p>
+						</div>
+					</div>
+				</div> -->
+			</div>
+			<br><br>
+			<div class="row">
+			<div class="col-md-12">
+				
+			</div>
+			</div>
+			
+		</div>
+		</div>
+		<!-- Body ContentEnd -->
+
+		<!-- foote Start -->
+		<div th:replace="layout :: footer"></div>
+		<!-- foote End -->
+		<!--=============================================
+    =            JS files        =
+    =============================================-->
+		<div th:replace="layout :: footerLink"></div>
+		<!--=====  End of JS files ======-->
+</body>
+</html>

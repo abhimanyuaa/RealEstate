@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head th:replace="layout :: headerLink">
+</head>
+<body>
+	<!--====================  NavBar area Start ====================-->
+	<div th:replace="layout :: navbar"></div>
+	<!--====================  NavBar area End ====================-->
+
+	<!-- Body Content Start -->
+	<!-- Page Banner Start-->
+	<section class="page-banner padding">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<h1 class="text-center">Register Yorself</h1>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Page Banner End -->
+	<br>
+	<br>
+	<div class="container-3">
+		<div class="row">
+			<form action="/saveUser" method="post" class="callus clearfix" enctype="multipart/form-data">
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<h2 class="text-uppercase bottom30">my profile</h2>
+					<div class="agent-p-img">
+					<label>Profile Photo</label>
+						<img src="images/profile.jpg" class="img-responsive" alt="image" />
+						
+						<br><!--  <input id="profilePhoto" name="profilePhoto" required type="file"> -->
+						
+					</div>
+				</div>
+				<div class="col-md-8 text-center">
+					<div class="profile-login">
+						<div class="agent-p-form  padding_half">
+
+							<input type="hidden" id="roles" value="ROLE_USER"> <input
+								type="hidden" id="status" value="Active">
+							<div class="single-query form-group ">
+								<input type="text" id="firstName" name="firstName"
+									placeholder="First Name">
+							</div>
+							<div class=" single-query form-group">
+								<input type="text" id="lastName" name="lastName"
+									placeholder="Last Name" class="keyword-input">
+							</div>
+							<div class="single-query form-group">
+								<input type="text" placeholder="Email Adress"
+									class="keyword-input" id="username" name="username"
+									required="required">
+							</div>
+							<div class="single-query  form-group">
+								<input type="text" id="mobile" name="mobile"
+									placeholder="Mobile No." class="keyword-input">
+							</div>
+							<div class=" single-query form-group">
+								<input type="text" id="address" name=" address"
+									placeholder="Address" class="keyword-input">
+							</div>
+							<div class=" single-query form-group">
+								<input type="password" id="password" name="password"
+									placeholder="Password" class="keyword-input">
+							</div>
+
+							<div class="row col-sm-4 text-center">
+								<input type="submit" value="Register" class="btn-blue">
+							</div>
+
+
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<!-- Body ContentEnd -->
+
+	<!-- foote Start -->
+	<div th:replace="layout :: footer"></div>
+	<!-- foote End -->
+	<!--=============================================
+    =            JS files        =
+    =============================================-->
+	<div th:replace="layout :: footerLink"></div>
+	<!--=====  End of JS files ======-->
+</body>
+</html>

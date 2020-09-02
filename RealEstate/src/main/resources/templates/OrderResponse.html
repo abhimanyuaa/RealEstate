@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head th:replace="layout :: headerLink">
+</head>
+<body>
+<!--====================  NavBar area Start ====================-->
+<div th:replace="layout :: navbar"></div>
+<!--====================  NavBar area End ====================-->
+
+<!-- Body Content Start --> 
+
+<!-- Page Banner Start-->
+	<section class="page-banner padding">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<h1 class="text-uppercase">Welcome</h1>
+					<p>To Castle Real Estate</p>
+
+				</div>
+			</div>
+		</div>
+		<br> <br>
+	</section>
+	<!-- Page Banner End -->
+	
+<div class="container">
+		<div class="row">
+			<br> <br>
+			<div align="center" class="mb-0">
+				<h2 style="color: Black">Your are Purchase Is Successfull  !!!</h2>
+				<br> <a href="/login">Login Again</a> | <a href="/">Home </a>
+			</div>
+		</div>
+
+	</div>
+
+
+
+<!-- Body ContentEnd --> 
+
+<!-- foote Start -->
+	<div th:replace="layout :: footer"></div>
+<!-- foote End -->
+<!--=============================================
+    =            JS files        =
+    =============================================-->
+	<div th:replace="layout :: footerLink"></div>
+	<!--=====  End of JS files ======-->
+</body>
+</html>

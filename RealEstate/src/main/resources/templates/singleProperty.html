@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head th:replace="Layout :: headerLink">
+</head>
+<body>
+	<!--====================  NavBar area Start ====================-->
+	<div th:replace="Layout :: navbar"></div>
+	<!--====================  NavBar area End ====================-->
+
+	<!-- Body Content Start -->
+	<!-- Property Detail Start -->
+	<section id="property" class="padding">
+		<div class="container property-details">
+			<div class="row">
+				<div class="col-md-12">
+					<h2 class="text-uppercase" th:text="${property.propertyName}">987
+						Cantebury Drive</h2>
+					<p th:text="${property.propertyLocation}" class="bottom30">45
+						Regent Street, London, UK</p>
+					<div id="property-d-1" class="owl-carousel single">
+						<div class="item">
+							<img th:src="${'/uploads/property/'+property.propertyImage1}"
+								alt="image" />
+						</div>
+					</div>
+					<div id="property-d-1-2" class="owl-carousel single">
+						<div class="item">
+							<img th:src="${'/uploads/property/'+property.propertyImage2}"
+								style="width: 218px; height: 122.56px"
+								onerror="singlePopertyimgErr(this)" />
+						</div>
+						<div class="item">
+							<img th:src="${'/uploads/property/'+property.propertyImage3}"
+								style="width: 218px; height: 122.56px"
+								onerror="singlePopertyimgErr(this);">
+						</div>
+						<div class="item ">
+							<img th:src="${'/uploads/property/'+property.propertyImage4}"
+								style="width: 218px; height: 122.56px"
+								onerror="singlePopertyimgErr(this);" />
+						</div>
+						<div class="item">
+							<img th:src="${'/uploads/property/'+property.propertyImage5}"
+								style="width: 218px; height: 122.56px"
+								onerror="singlePopertyimgErr(this);" />
+						</div>
+						<div class="item">
+							<img th:src="${'/uploads/property/'+property.propertyImage6}"
+								style="width: 218px; height: 122.56px"
+								onerror="singlePopertyimgErr(this);" />
+						</div>
+						<div class="item">
+							<img th:src="${'/uploads/property/'+property.propertyImage7}"
+								style="width: 218px; height: 122.56px"
+								onerror="singlePopertyimgErr(this);" />
+						</div>
+						<div class="item">
+							<img th:src="${'/uploads/property/'+property.propertyImage8}"
+								style="width: 218px; height: 122.56px"
+								onerror="singlePopertyimgErr(this);" />
+						</div>
+					</div>
+					<div class="property_meta bg-black bottom40">
+						<span th:text="${property.propertySize+' Sq.Feet'}"><i
+							class="icon-select-an-objecto-tool"></i>4800 sq ft</span> <span
+							th:text="${'PropertyType : '+property.propertyType}"><i
+							class=" icon-microphone"></i>Type</span>
+
+					</div>
+				</div>
+				<div class="col-md-8 listing1">
+					<h2 class="text-uppercase">Property Description</h2>
+					<p class="bottom30" th:utext="${property.propertyDescription}">Description</p>
+
+					<h2 class="text-uppercase bottom20">Quick Summary</h2>
+					<div class="row property-d-table bottom40">
+						<div class="col-md-6 col-sm-6 col-xs-12">
+							<table class="table table-striped table-responsive">
+								<tbody>
+									<tr>
+										<td><b>Property Id</b></td>
+										<td th:text="${property.propertyId}" class="text-right">5456</td>
+									</tr>
+									<tr>
+										<td><b>Price</b></td>
+										<td th:text="${'Rs. '+property.propertyPrice}"
+											class="text-right">$8,600 / month</td>
+									</tr>
+									<tr>
+										<td><b>Property Size</b></td>
+										<td th:text="${property.propertySize+' Sq.Feet'}"
+											class="text-right">5,500 ft2</td>
+									</tr>
+
+								</tbody>
+							</table>
+						</div>
+						<div class="col-md-6 col-sm-6 col-xs-12"></div>
+					</div>
+					<h2 class="text-uppercase bottom20">Amenities</h2>
+					<div class="row bottom40">
+						<div class="col-md-4 col-sm-6 col-xs-12"
+							th:each="list:${property.amenitiesList}">
+							<ul class="pro-list">
+								<li th:text="${list.amenityName}">Air Conditioning</li>
+							</ul>
+						</div>
+
+
+					</div>
+				</div>
+
+				<aside class="col-md-4 col-xs-12">
+					<div sec:authorize="isAnonymous()">
+						<a href="/login">
+							<button style="float: center" type="submit"
+								class="btn-blue border_radius">Buy Porperty</button>
+						</a>
+					</div>
+					<br> <br>
+					<div class="row">
+						<div sec:authorize="isAuthenticated()">
+							<div style="float: center">
+								<button id="ownerContact" type="submit"
+									class="btn-blue border_radius">Contact Owner</button>
+							</div>
+							<br> <br>
+							<div id="owner">
+								<div th:if="${warning == 'last'}">
+									<p style="color: red">*Upgrade the Pack</p>
+								</div>
+								<h2 class="text-uppercase bottom20">Property Owner</h2>
+								<div class="col-sm-4 bottom40">
+									<div class="agent_wrap">
+										<div class="image">
+											<img src="/images/agent-one.jpg" alt="Agents">
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-8 bottom40">
+									<div class="agent_wrap">
+										<h3 th:text="${'Name :-  '+user.firstName}">Bohdan
+											Kononets</h3>
+									</div>
+								</div>
+								<div class="col-sm-12 agent_wrap bottom30">
+									<table class="agent_contact table">
+										<tbody>
+											<tr class="bottom10">
+												<td><strong>Phone:</strong></td>
+												<td th:text="${user.mobile}" class="text-right">(+01)
+													34 56 7890</td>
+											</tr>
+											<tr>
+												<td><strong>Email Adress:</strong></td>
+												<td th:text="${user.username}" class="text-right"><a
+													href="#.">bohdan@castle.com</a></td>
+											</tr>
+
+										</tbody>
+									</table>
+									<div style="border-bottom: 1px solid #d3d8dd;" class="bottom15"></div>
+								</div>
+								<div class="col-sm-12 bottom40">
+									<p class="text-left">
+										<strong>Chat :</strong>
+									</p>
+									<form class="callus">
+										<div class="form-group">
+											<textarea class="form-control"
+												placeholder=" Type Your Message Here.."></textarea>
+										</div>
+										<input type="submit" class="btn-blue uppercase border_radius"
+											value="submit now">
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="property-query-area clearfix"
+						sec:authorize="isAnonymous()">
+						<div class="col-md-12">
+							<h3 class="text-uppercase bottom20 top15">Advanced Search</h3>
+						</div>
+						<form class="callus">
+							<div class="single-query form-group col-sm-12">
+
+								<input type="text" class="keyword-input" id="propertyName"
+									name="propertyName" placeholder="Property name ">
+							</div>
+							<div class="single-query form-group col-sm-12">
+								<div class="intro">
+									<input type="text" id="propertyLocation"
+										name="propertyLocation" placeholder="Property Location " />
+								</div>
+							</div>
+							<div class="single-query form-group col-sm-12">
+								<div class="intro">
+									<input type="text" id="propetyType" name="propetyType"
+										placeholder="Property Type" />
+								</div>
+							</div>
+							<div class="single-query form-group col-sm-12">
+								<div class="intro">
+									<input type="text" id="propetyCity" name="propetyCity"
+										placeholder="Property City" />
+								</div>
+							</div>
+
+
+							<!-- Range
+                  <div class="col-sm-12 bottom10">
+                     <div class="single-query-slider">
+                        <label><strong>Price Range:</strong></label>
+                        <div class="price text-right">
+                           <span>$</span>
+                           <div class="leftLabel"></div>
+                           <span>to $</span>
+                           <div class="rightLabel"></div>
+                        </div>
+                        <div data-range_min="0" data-range_max="1500000" data-cur_min="0" data-cur_max="1500000" class="nstSlider">
+                           <div class="bar"></div>
+                           <div class="leftGrip"></div>
+                           <div class="rightGrip"></div>
+                        </div>
+                     </div>
+                  </div> -->
+							<div class="col-sm-12 form-group">
+								<button type="submit" class="btn-blue border_radius">Search</button>
+							</div>
+						</form>
+
+					</div>
+				</aside>
+			</div>
+		</div>
+	</section>
+	<!-- Property Detail End -->
+
+
+	<!-- Body ContentEnd -->
+
+	<!-- foote Start -->
+	<div th:replace="Layout :: footer"></div>
+	<!-- foote End -->
+	<!--=============================================
+    =            JS files        =
+    =============================================-->
+	<div th:replace="Layout :: footerLink"></div>
+	<!--=====  End of JS files ======-->
+</body>
+</html>

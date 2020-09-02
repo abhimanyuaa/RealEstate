@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+
+<head th:replace="layout :: headerLink">
+
+</head>
+
+<body>
+	<!--====================  NavBar area Start ====================-->
+	<div th:replace="layout :: navbar"></div>
+	<!--====================  NavBar area End ====================-->
+	<!-- Page Banner Start-->
+	<section class="page-banner padding">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<h1 class="text-uppercase">Your Property</h1>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Page Banner End --
+<!-- Body Content Start -->
+
+	<div class="row">
+		<br> <br>
+		<div class="col-sm-1 col-md-2"></div>
+		<div class="col-sm-10 col-md-8">
+			<h2 class="text-uppercase bottom40">Edit Property</h2>
+			<!-- y" -->
+			<form id="addProperty" action="/property/save-edited-property"
+				method="post" enctype="multipart/form-data"
+				class="callus clearfix border_radius submit_property"
+				th:object="${prop}">
+				<div class="row">
+					<div class="col-sm-6">
+						<input class="form-control" type="hidden" name="propertyId"
+							th:field="*{propertyId}" value="${prop.propertyId}">
+						<div class="single-query form-group bottom20">
+							<label>Apartment Name / House Name</label> <input type="text"
+								id="propertyName" th:field="*{propertyName}"
+								th:value="${prop.propertyName}" class="keyword-input"
+								required="required">
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="single-query form-group bottom20">
+							<label>Location</label> <input id="propertyLocation"
+								th:value="${prop.propertyLocation}"
+								th:field="*{propertyLocation}" type="text" class="keyword-input"
+								required>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="single-query form-group bottom20">
+							<label>City</label> <input id="propertyCity"
+								th:field="*{propertyCity}" type="text" class="keyword-input"
+								th:value="${prop.propertyCity}" required>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="single-query bottom20">
+							<label>Type </label>
+							<div class="intro">
+								<select required id="propertyType" th:field="*{propertyType}">
+									<option th:each="ty:${type}" th:value="${ty.typeName}"
+										th:text="${ty.typeName}"></option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="single-query form-group bottom20">
+							<label>Price</label> <input id="propertyPrice"
+								th:field="*{propertyPrice}" type="text" class="keyword-input"
+								required th:value="${prop.propertyPrice}">
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<h3 class="margin40 bottom15">
+						Property Photos <i class="fa fa-info-circle help"
+							data-toggle="tooltip" title="add images to upload for property!"></i>
+					</h3>
+				</div>
+				<div class="row">
+					<div class="col-sm-6">
+						<div id="upload-widget" class="dropzone bottom15">
+							<label style="color: red"> *Banner Image</label>
+							<div class="dz-default ">
+								<input id="propertyImage1" th:field="*{propertyImage1}"
+									type="file"> <br>
+								<div class="col-sm-8 image">
+									<img th:src="${'/uploads/property/'+prop.propertyImage1}"
+										class="img-responsive">
+								</div>
+							</div>
+
+						</div>
+						<div id="upload-widget" class="dropzone  bottom15">
+							<label style="color: red"> *Advertisement Image</label>
+
+							<div class="dz-default ">
+								<input id="propertyImage2" th:field="*{propertyImage2}"
+									type="file"><br>
+								<div class="col-sm-8 image">
+									<img th:src="${'/uploads/property/'+prop.propertyImage2}"
+										class="img-responsive">
+								</div>
+							</div>
+						</div>
+						<div id="upload-widget" class="dropzone  bottom15">
+							<label style="color: black">Property Image</label>
+							<div class="dz-default ">
+								<input id="propertyImage3" th:field="*{propertyImage3}"
+									type="file"><br>
+								<div class="col-sm-8 image">
+									<img th:src="${'/uploads/property/'+prop.propertyImage3}"
+										style="height: 134px; width: 400px"
+										onerror="singlePopertyimgErr(this);" class="img-responsive">
+								</div>
+							</div>
+						</div>
+						<div id="upload-widget" class="dropzone  bottom15">
+							<label style="color: black">Property Image </label>
+							<div class="dz-default ">
+								<input id="propertyImage4" th:field="*{propertyImage4}"
+									type="file"><br>
+								<div class="col-sm-8 image">
+									<img th:src="${'/uploads/property/'+prop.propertyImage4}"
+										style="height: 134px; width: 400px"
+										onerror="singlePopertyimgErr(this);" class="img-responsive">
+								</div>
+							</div>
+						</div>
+						<div id="upload-widget" class="dropzone  bottom15">
+							<label style="color: black">Property Image </label>
+							<div class="dz-default ">
+								<input id="propertyImage5" th:field="*{propertyImage5}"
+									type="file"><br>
+								<div class="col-sm-8 image">
+									<img th:src="${'/uploads/property/'+prop.propertyImage5}"
+										style="height: 134px; width: 400px"
+										onerror="singlePopertyimgErr(this);" class="img-responsive"
+										alt="Image not Found">
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<div class="col-sm-6">
+						<div id="upload-widget" class="dropzone bottom15">
+							<label style="color: black">Property Image </label>
+							<div class="dz-default ">
+								<input id="propertyImage6" th:field="*{propertyImage6}"
+									type="file"><br>
+								<div class="col-sm-8 image">
+									<img th:src="${'/uploads/property/'+prop.propertyImage6}"
+										style="height: 134px; width: 400px"
+										onerror="singlePopertyimgErr(this);" alt="Image not Found"
+										class="img-responsive">
+								</div>
+							</div>
+
+						</div>
+						<div id="upload-widget" class="dropzone bottom15">
+							<label style="color: black">Property Image </label>
+							<div class="dz-default ">
+								<input id="propertyImage7" th:field="*{propertyImage7}"
+									type="file"><br>
+								<div class="col-sm-8 image">
+									<img th:src="${'/uploads/property/'+prop.propertyImage7}"
+										style="height: 134px; width: 400px"
+										onerror="singlePopertyimgErr(this);" class="img-responsive">
+								</div>
+							</div>
+						</div>
+						<div id="upload-widget" class="dropzone  bottom15">
+							<label style="color: black">Property Image </label>
+							<div class="dz-default ">
+								<input id="propertyImage8" th:field="*{propertyImage8}"
+									type="file"><br>
+								<div class="col-sm-8 image">
+									<img th:src="${'/uploads/property/'+prop.propertyImage8}"
+										style="height: 134px; width: 400px"
+										onerror="singlePopertyimgErr(this);" class="img-responsive">
+								</div>
+							</div>
+						</div>
+						<div id="upload-widget" class="dropzone  bottom15">
+							<label style="color: black">Property Image </label>
+							<div class="dz-default ">
+								<input id="propertyImage9" th:field="*{propertyImage9}"
+									type="file"><br>
+								<div class="col-sm-8 image">
+									<img th:src="${'/uploads/property/'+prop.propertyImage9}"
+										style="height: 134px; width: 400px"
+										onerror="singlePopertyimgErr(this);" class="img-responsive">
+								</div>
+							</div>
+						</div>
+						<div id="upload-widget" class="dropzone  bottom15">
+							<label style="color: black">Property Image </label>
+							<div class="dz-default ">
+								<input id="propertyImage10" th:field="*{propertyImage10}"
+									type="file"><br>
+								<div class="col-sm-8 image">
+									<img th:src="${'/uploads/property/'+prop.propertyImage10}"
+										style="height: 134px; width: 400px"
+										onerror="singlePopertyimgErr(this);" class="img-responsive">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-sm-12">
+						<h3 class="bottom15 margin40">Property Amenities</h3>
+					</div>
+				</div>
+
+				<div class="row">
+
+					<div class="col-sm-4">
+						<div class="single-query form-group bottom20">
+							<label>Size in Square Feet</label> <input type="text"
+								id="propertySize" th:field="*{propertySize}"
+								th:value="${prop.propertySize}" class="keyword-input" required
+								placeholder="Enter Sq.Ft.">
+
+						</div>
+					</div>
+					<div class="col-sm-4">
+
+						<div class="single-query form-group bottom20">
+							<label> No. Of Halls</label> <input type="text"
+								th:value="${prop.propertyTotalHall}" id="propertyTotalHall"
+								th:field="*{propertyTotalHall}" required class="keyword-input"
+								placeholder="Enter no of Halls">
+						</div>
+
+					</div>
+					<div class="col-sm-4">
+						<div class="single-query  form-group bottom20">
+							<label>No. of Bedrooms</label> <input type="text"
+								th:value="${prop.propertyBedroomes}" id="propertyBedroomes"
+								th:field="*{propertyBedroomes}" class="keyword-input"
+								placeholder="Enter no of Bedrooms">
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-4 single-query form-group ">
+					<br>
+					<div th:each="lst:${listAmenity}">
+						<div class="col-sm-4">
+							<label for="amenitiesList" th:text="${lst.amenityName}">
+							</label>
+						</div>
+						<div class="col-sm-2 ">
+							<input id="amenitiesList" type="checkbox"
+								th:field="*{amenitiesList}" th:value="${lst.amenityId}" />
+						</div>
+					</div>
+				</div>
+
+
+				<div class="col-sm-12">
+					<h3 class="bottom15 margin40">Property Description</h3>
+					<label style="color: red"> *Maximum 250 Characters</label>
+					<textarea class="ckeditor" id="propertyDescription"
+						th:value="${prop.propertyDescription}"
+						th:field="*{propertyDescription}"> 
+									</textarea>
+				</div>
+
+				<div class="col-md-4">
+					<button id="propertyDescription" name="propertyDescription"
+						type="submit" class="btn-blue border_radius margin40">Submit
+						Property</button>
+				</div>
+			</form>
+		</div>
+		<div class="col-sm-1 col-md-2"></div>
+
+		<div class="col-sm-4"></div>
+
+	</div>
+
+
+	<!-- Body ContentEnd -->
+
+	<!-- foote Start -->
+	<div th:replace="layout :: footer"></div>
+	<!-- foote End -->
+	<!--=============================================
+    =            JS files        =
+    =============================================-->
+
+	<div th:replace="layout :: footerLink"></div>
+	<!--=====  End of JS files ======-->
+</body>
+</html>

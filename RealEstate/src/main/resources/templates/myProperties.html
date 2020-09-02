@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head th:replace="Layout :: headerLink">
+</head>
+<body>
+<!--====================  NavBar area Start ====================-->
+<div th:replace="Layout :: navbar"></div>
+<!--====================  NavBar area End ====================-->
+
+<!-- Body Content Start --> 
+<!-- Page Banner Start-->
+	<section class="page-banner padding">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<h1 class="text-uppercase">Welcome</h1>
+					<p>To Castle Real Estate</p>
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Page Banner End -->
+<!-- My - Property Start -->
+<section id="agent-2-peperty" class="my-pro padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <ul class="f-p-links margin_bottom">
+          <li><a href="/my-profile"><i class="icon-icons230"></i>Profile</a></li>
+          <li><a href="/property/my-properties" ><i class="icon-icons215"></i> My Properties</a></li>
+          <li><a href="/property/add-property"><i class="icon-icons215"></i> Submit Property</a></li>
+          <li><a href="favorite_properties.html"><i class="icon-icons43"></i> Favorite Properties</a></li>
+          <li><a href="/logout"><i class="icon-lock-open3"></i>Logout</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="row bottom30">
+      <div class="col-md-12 text-center">
+        <h2 class="text-uppercase">My Properties</h2>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container  list-t-border" th:each="property : ${page.content}">
+  <br>
+    <div class="row bg-hover">
+      <div class="my-pro-list">
+        <div class="col-md-2 col-sm-2 col-xs-12">
+          <img 	th:src="${'/uploads/property/'+property.propertyImage1}" alt="image"/>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+          <div class="feature-p-text">
+            <h4 th:text="${property.propertyName}">Historic Town House</h4>
+            <p th:text="${property.propertyLocation}">Action Area I, Newtown, New Town, West Bengal, India</p>
+            <span><b>Status:</b>  For Sale</span><br><br>
+            <div >
+        <span  th:text="${'Rs. '+property.propertyPrice}">$128,600</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-12">
+          <div class="select-pro-list">
+            <a th:href="@{/property/edit-property/(Url=${property.propertyUrl})}"><i class="icon-pen2"></i></a>
+            <a th:href="@{/property/delete-property/(Url=${property.propertyUrl})}"><i class="icon-cross"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<br><br>
+     <!-- Pagination Start -->
+  <div class="container">
+   <div class="row">
+				<div class="col-md-12 text-center">
+					<th:block th:each="i:${#numbers.sequence(0,page.totalPages-1)}">
+						<ul class="pager">
+
+							<li class="active"><span th:if="${page.number == i}">[[${i}+1]]</span></li>
+							<li><span th:unless="${page.number == i}"> <a
+									th:href="@{/property/my-properties(page=${i},size=${page.size})}">[[${i}+1]]
+								</a>
+							</span></li>
+						</ul>
+					</th:block>
+				</div>
+			</div>
+  </div>
+  <!-- Pagination End -->
+
+ 
+</section>
+<!-- My - Property end -->
+<!-- Body ContentEnd --> 
+
+<!-- foote Start -->
+	<div th:replace="Layout :: footer"></div>
+<!-- foote End -->
+<!--           JS files        -->
+	<script type="text/javascript">
+function myMap() {
+  var mapCanvas = document.getElementById("single_map");
+  var myCenter = new google.maps.LatLng(51.508742,-0.120850); 
+  var mapOptions = {center: myCenter, zoom: 5};
+  var map = new google.maps.Map(mapCanvas,mapOptions);
+  var marker = new google.maps.Marker({
+    position: myCenter,
+	animation:google.maps.Animation.BOUNCE,
+    icon: "images/map_marker.png"
+  });
+  marker.setMap(map);
+}
+
+</script>
+
+	<div th:replace="Layout :: footerLink"></div>
+	<!--=====  End of JS files ======-->
+</body>
+</html>

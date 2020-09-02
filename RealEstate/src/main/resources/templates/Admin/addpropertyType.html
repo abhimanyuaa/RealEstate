@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/Admin/Layout :: headerLink">
+
+</head>
+
+<body class="text-left">
+	<div th:replace="/Admin/Layout :: navbar"></div>
+        <div class="main-content-wrap sidenav-open d-flex flex-column">
+            <!-- ============ Body content start ============= -->
+            <div class="main-content">
+                <div class="breadcrumb">
+                    <h1>Add Type For Property</h1>
+                  
+                </div>
+                <div class="separator-breadcrumb border-top"></div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div class="card-title mb-3">Add Property type</div>
+                                 <form th:action="@{/Admin/save-property}" method="post" >
+                                     <div class="row">
+                                        <div class="col-lg-4 form-group mb-8">
+                                            <label for="typeName">Property Type</label>
+                                            <input class="form-control" id="typeName" 
+                                            type="text" placeholder="Enter Property type " name="typeName" />
+                                          
+                                        </div>
+								  <div class="col-md-12" align="left">
+                                            <button class="btn btn-primary">Submit</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             </div>
+                <!-- end of main-content -->
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <!-- Footer Start -->
+             <div th:replace="/Admin/Layout :: footer"></div>
+            <!-- fotter end -->
+        </div>
+   
+     <div th:replace="/Admin/Layout:: footerLink"></div>
+</body>
+
+
+</html>

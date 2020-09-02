@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/Admin/Layout :: headerLink">
+
+</head>
+<body class="text-left">
+	<div th:replace="/Admin/Layout :: navbar"></div>
+        <div class="main-content-wrap sidenav-open d-flex flex-column">
+            <!-- ============ Body content start ============= -->
+            <div class="main-content">
+                <div class="breadcrumb">
+                    <h1>Add Admin</h1>
+                    
+                </div>
+                <div class="separator-breadcrumb border-top"></div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div class="card-title mb-3">Form Inputs</div>
+                                <form action="/Admin/saveNewAdmin"   method="post">
+                                     <div class="row">
+                                     	<input type="hidden" id="roles" value="ROLE_ADMIN"> <input
+								type="hidden" id="status" value="Active">
+								
+                                        <div class="col-lg-4 form-group mb-8">
+                                            <label for="productName">First Name</label>
+                                            <input class="form-control" id="firstName" 
+                                           name="firstName"
+                                            type="text" placeholder="Enter first Name" />
+                                        </div>
+                                        
+                                        <div class="col-lg-4 form-group mb-8">
+                                            <label for="productName">Last Name</label>
+                                            <input class="form-control" id="lastName" 
+                                           name="lastName"
+                                            type="text" placeholder="Enter Last Name" />
+                                        </div>
+										
+                                        <div class="col-lg-4 form-group mb-8">
+                                            <label for="username">Email</label>
+                                            <input class="form-control" id="username" 
+                                           name="username"
+                                            type="text" placeholder="Enter email" />
+                                        </div>
+                                         <div class="col-lg-4 form-group mb-8">
+                                            <label for="mobile">Mobile</label>
+                                            <input class="form-control" id="mobile" 
+                                           name="mobile"
+                                            type="text" placeholder="Enter Mobile No." />
+                                        </div>
+                                         <div class="col-lg-4 form-group mb-8">
+                                            <label for="address">Address</label>
+                                            <input class="form-control" id="address" 
+                                           name="address"
+                                            type="text" placeholder="Enter Address" />
+                                        </div>
+                                         <div class="col-lg-4 form-group mb-8">
+                                            <label for="username">Password</label>
+                                            <input class="form-control" id="password" 
+                                           name="password"
+                                            type="text" placeholder="Enter password" />
+                                        </div>
+                   					 <div class="col-md-12">
+                                            <button class="btn btn-primary">Submit</button>
+                                        </div>
+                            </div>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <!-- end of main-content -->
+            </div>
+            <!-- Footer Start -->
+           <div th:replace="/Admin/Layout :: footer"></div>
+            <!-- fotter end -->
+        </div>
+ 
+     <div th:replace="/Admin/Layout:: footerLink"></div>
+</body>
+
+
+<!-- Mirrored from demos.ui-lib.com/gull/html/layout1/form.basic.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 18 Mar 2020 06:43:05 GMT -->
+</html>

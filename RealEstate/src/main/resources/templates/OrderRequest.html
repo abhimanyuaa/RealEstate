@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<body>
+
+	<form id="redirectForm" method="post" action="https://test.cashfree.com/billpay/checkout/post/submit">
+	 <input type="text" name="signature" th:value="${signature}"/>
+    <input type="hidden" name="appId" th:value="${postData.appId}"/>
+    <input type="hidden" name="orderId" th:value="${postData.orderId}"/>
+    <input type="hidden" name="orderAmount"  th:value="${postData.orderAmount}"/>
+    <input type="hidden" name="orderCurrency" th:value="${postData.orderCurrency}"/>
+    <input type="hidden" name="orderNote" th:value="${postData.orderNote}"/>
+    <input type="hidden" name="customerName" th:value="${postData.customerName}"/>
+    <input type="hidden" name="customerEmail" th:value="${postData.customerEmail}"/>
+    <input type="hidden" name="customerPhone" th:value="${postData.customerPhone}"/>
+    <input type="hidden" name="returnUrl" th:value="${postData.returnUrl}"/>
+    <input type="hidden" name="notifyUrl" th:value="${postData.notifyUrl}"/>
+  </form>
+
+<script>document.getElementById("redirectForm").submit();</script>
+</body>
+</html>
+	

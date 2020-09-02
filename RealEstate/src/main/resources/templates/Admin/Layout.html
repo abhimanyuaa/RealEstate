@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:fragment="headerLink">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<title>Castle Administration</title>
+<link
+	href="https://fonts.googleapis.com/css?family=Nunito:300,400,400i,600,700,800,900"
+	rel="stylesheet" />
+<link href="/Admin/css/themes/lite-purple.min.css" rel="stylesheet" />
+<link href="/Admin/css/plugins/perfect-scrollbar.min.css" rel="stylesheet" />
+<link rel="icon" href="/images/icon.png">
+</head>
+
+<body class="text-left">
+<div th:fragment="navbar">
+	<div class="app-admin-wrap layout-sidebar-large">
+		<div class="main-header">
+			<div class="logo">
+				<img src="/images/logo.png" alt="">
+			</div>
+			<div class="d-flex align-items-center">
+				<!-- Mega menu -->
+
+				<!-- / Mega menu -->
+				<div class="search-bar">
+					<input type="text" placeholder="Search"> <i
+						class="search-icon text-muted i-Magnifi-Glass1"></i>
+				</div>
+			</div>
+			<div style="margin: auto"></div>
+			<div class="header-part-right">
+				<!-- Full screen toggle -->
+				<i class="i-Full-Screen header-icon d-none d-sm-inline-block"
+					data-fullscreen></i>
+
+
+				<!-- Notificaiton End -->
+				<!-- User avatar dropdown -->
+				<div class="dropdown">
+					<div class="user col align-self-end">
+
+						<img src="/Admin/images/faces/2.jpg" id="userDropdown" alt=""
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<div class="dropdown-menu dropdown-menu-right"
+							aria-labelledby="userDropdown">
+							<div class="dropdown-header">
+								<i class="i-Lock-User mr-1"></i> Welcome Admin
+							</div>
+							<a class="dropdown-item" href="/">View Website</a> <a
+								class="dropdown-item" href="/Admin/adminlogout">Sign out</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Side Bar menu List -->
+		<div class="side-content-wrap">
+			<div class="sidebar-left open rtl-ps-none" data-perfect-scrollbar=""
+				data-suppress-scroll-x="true">
+				<ul class="navigation-left">
+
+					<li class="nav-item" data-item=""><a
+						class="nav-item-hold" href="/Admin/AdminDashBoard"><i class="nav-icon i-Bar-Chart"></i><span
+							class="nav-text">Dashboard</span></a>
+						<div class="triangle"></div></li>
+
+
+					<li class="nav-item" data-item="User"><a
+						class="nav-item-hold" href="#"><i class="nav-icon i-Add-User"></i><span
+							class="nav-text">Add User</span></a>
+						<div class="triangle"></div></li>
+
+					<li class="nav-item" data-item="Property"><a
+						class="nav-item-hold" href="#"><i class="nav-icon i-Library"></i><span
+							class="nav-text">Property</span></a>
+						<div class="triangle"></div></li>
+
+
+
+					<li class="nav-item" data-item="Website"><a
+						class="nav-item-hold" href="#"><i
+							class="nav-icon i-Computer-Secure"></i><span class="nav-text">Website</span></a>
+						<div class="triangle"></div></li>
+
+					<li class="nav-item" data-item="Package"><a
+						class="nav-item-hold" href="#"><i class="nav-icon i-File-Clipboard-File--Text"></i><span
+							class="nav-text">Package</span></a>
+						<div class="triangle"></div></li>
+				</ul>
+			</div>
+
+			<!-- Side Bar menu Contetnt -->
+			<div class="sidebar-left-secondary rtl-ps-none"
+				data-perfect-scrollbar="" data-suppress-scroll-x="true">
+				<ul class="childNav" data-parent="User">
+					<li class="nav-item"><a href="/Admin/viewAllUser"><i
+							class="nav-icon i-File-Clipboard-Text--Image"></i><span
+							class="item-name">Manage User</span></a>
+							</li>
+					<li class="nav-item"><a href="/Admin/addAdmin"><i
+							class="nav-icon i-File-Clipboard-Text--Image"></i><span
+							class="item-name">Add New Admin</span></a></li>
+
+				</ul>
+				<ul class="childNav" data-parent="Property">
+					
+					<li class="nav-item"><a href="/Admin/add-property-type"><i
+							class="nav-icon i-Add-File"></i><span class="item-name">Manage
+								Property Type</span></a></li>
+					<li class="nav-item"><a href="/Admin/add-property-Amenities"><i
+							class="nav-icon i-Add-File"></i><span class="item-name">Manage
+								Property Amenities</span></a></li>
+				
+					
+				</ul>
+
+				<ul class="childNav" data-parent="Website">
+					<li class="nav-item"><a href="/Admin/viewAllContact"><i
+							class="nav-icon i-Speach-Bubble-3"></i><span class="item-name">Manage Contact </span></a></li>
+			</ul>
+				<ul class="childNav" data-parent="Package">
+					<li class="nav-item"><a href="/Admin/add-new-package"><i
+							class="nav-icon i-Receipt-4"></i><span class="item-name">Add Package </span></a></li>
+							<li class="nav-item"><a href="/Admin/view-package"><i
+							class="nav-icon i-Receipt-4"></i><span class="item-name">View Package </span></a></li>
+				<li class="nav-item"><a href="/Admin/addPackageFeatures"><i
+							class="nav-icon i-Receipt-4"></i><span class="item-name">Manage Package Features </span></a></li>
+				</ul>
+			</div>
+			<div class="sidebar-overlay"></div>
+		</div>
+		</div>
+		</div>
+		<!-- =============== Left side End ================-->
+		
+			<!-- ============ Body content start ============= -->
+			
+			<!-- end of main-content -->
+
+			<!-- Footer Start -->
+			<div th:fragment="footer">
+			<div class="flex-grow-1"></div>
+			<div class="app-footer">
+				<div class="row">
+					<div class="col-md-9">
+						<p>
+							<strong>Castle</strong>
+						</p>
+						
+					</div>
+				</div>
+				<div
+					class="footer-bottom border-top pt-3 d-flex flex-column flex-sm-row align-items-center">
+					<a class="btn btn-primary text-white btn-rounded"
+						href="https://themeforest.net/item/gull-bootstrap-laravel-admin-dashboard-template/23101970"
+						target="_blank">Abhi's Web</a> <span class="flex-grow-1"></span>
+					<div class="d-flex align-items-center">
+						<img class="logo" src="../../dist-assets/images/logo.png" alt="">
+						<div>
+							<p class="m-0">&copy; 2020 Abhi's</p>
+							<p class="m-0">All rights reserved</p>
+						</div>
+					</div>
+				</div>
+				<!-- fotter end -->
+			</div>
+		</div>
+	
+<div th:fragment="footerLink">
+	<script src="/Admin/js/plugins/jquery-3.3.1.min.js"></script>
+	<script src="/Admin/js/plugins/bootstrap.bundle.min.js"></script>
+	<script src="/Admin/js/plugins/perfect-scrollbar.min.js"></script>
+	<script src="/Admin/js/scripts/script.min.js"></script>
+	<script src="/Admin/js/scripts/sidebar.large.script.min.js"></script>
+</div>
+</body>
+</html>

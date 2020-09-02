@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head th:replace="Layout :: headerLink">
+</head>
+<body>
+	<!--====================  NavBar area Start ====================-->
+	<div th:replace="Layout :: navbar"></div>
+	<!--====================  NavBar area End ====================-->
+
+	<!-- Body Content Start -->
+	<!-- Page Banner Start-->
+	<section class="page-banner padding">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<h1 class="text-uppercase">Welcome</h1>
+					<p>To Castle Real Esatate</p>
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Page Banner End -->
+	<section id="login" class="padding">
+		<div class="container">
+			<h3 class="hidden">hidden</h3>
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<div class="profile-login">
+						<!-- Tab panes -->
+						<div class="tab-content padding_half">
+							<div role="tabpanel" class="tab-pane fade in active" id="home">
+								<div class="agent-p-form">
+									<div style="color: white"  th:if="${param.error}" th:with="errorMsg=${session['SPRING_SECURITY_LAST_EXCEPTION'].message}"
+								role="alert" id="msg">
+								*Invalid Credentials 
+								</div>
+								<br>
+								<br>
+									<form action="/login" method="post" class="callus clearfix">
+										<h2 class="form-group " style="color: white">
+											<span >Log In</span>
+										</h2>
+										<div class="single-query  form-group col-md-10">
+											<input id="username" name="username" type="text" class="keyword-input"
+												placeholder="username">
+										</div>
+										<div class=" single-query  form-group  col-sm-10">
+											<input type="password"  id="password" name="password" class="keyword-input"
+												placeholder="password" >
+										</div>
+										<div class="row">
+											<div class="col-sm-12">
+												<div class="col-sm-6 form-group">
+												</div>
+												<div class="col-sm-6 form-group text-right">
+													<a href="#" class="lost-pass">Forgot password?</a>
+												</div>
+											</div>
+										</div>
+									
+										<div class=" col-sm-12 form-group">
+											<input type="submit" value="submit now"
+												class="btn-slide border_radius">
+										</div>
+										<div class="col-sm-8 text-right form-group" >
+													<a href="/register" class="lost-pass">New User ? Register</a>
+												</div>
+									</form>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Login end -->
+	<!-- Body ContentEnd -->
+
+	<!-- foote Start -->
+	<div th:replace="Layout :: footer"></div>
+	<!-- foote End -->
+	<!--=============================================
+    =            JS files        =
+    =============================================-->
+	<div th:replace="Layout :: footerLink"></div>
+	<!--=====  End of JS files ======-->
+</body>
+<html>
