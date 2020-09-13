@@ -61,7 +61,7 @@ public class AdminController {
 
 	// Access Denied
 	@RequestMapping("/access-denied")
-	public String access_denied(RedirectAttributes attributes) {
+	public String access_denid(RedirectAttributes attributes) {
 		attributes.addFlashAttribute("error", true);
 		attributes.addFlashAttribute("message", "You Don't have permission");
 		return "redirect:/Admin/error-404";
