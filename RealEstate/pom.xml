@@ -86,7 +86,6 @@
 			<artifactId>jasperreports</artifactId>
 			<version>6.9.0</version>
 		</dependency>
-	
 
 	</dependencies>
 	<build>
@@ -94,8 +93,16 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+  			<appName>RealEstate</appName>
+			</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.heroku.sdk</groupId>
+				<artifactId>heroku-maven-plugin</artifactId>
+				<version>3.0.3</version>
+				
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
